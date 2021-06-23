@@ -1,29 +1,22 @@
+using DataAccess.Concrete.EfCore.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using ShopApp.Core.Webapi.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using ShopApp.Core.Webapi.SeedData;
 
 namespace ShopApp.Core.Webapi
 {
     public class Startup
     {
-        private readonly IConfiguration _config;
-
-        public Startup(IConfiguration config)
+        public Startup(IConfiguration configuration)
         {
-            _config = config;
+            Configuration = configuration;
         }
+
+        public IConfiguration Configuration { get; }
 
 
 
@@ -32,7 +25,7 @@ namespace ShopApp.Core.Webapi
         {
 
             services.AddControllers();
-            services.AddDbContext<ShopContext>(x => x.UseSqlite(_config.GetConnectionString("DefaultConnection")));
+            //services.AddDbContext<ShopContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddSwaggerGen(c =>
             {
@@ -46,6 +39,7 @@ namespace ShopApp.Core.Webapi
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+              
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ShopApp.Core.Webapi v1"));
             }
