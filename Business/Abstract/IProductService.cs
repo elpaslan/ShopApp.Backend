@@ -9,10 +9,9 @@ using System.Threading.Tasks;
 namespace Business.Abstract
 {
     public interface IProductService
-    {
-        IDataResult<Product> GetById(int productId);
+    {        
         IDataResult<List<Product>> GetList();
-       
+        IDataResult<Product> GetById(int productId);
         IResult Add(Product product);
         IResult Delete(Product product);
         IResult Update(Product product);
