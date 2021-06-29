@@ -47,6 +47,9 @@ namespace Business.Concrete
             return new SuccessResult(Messages.ProductDeleted);
         }
 
-       
+        public IDataResult<List<Product>> GetAllByCategory(int categoryId)
+        {
+            return new SuccessDataResult<List<Product>>(_productDal.GetList(p => p.CategoryId == categoryId), "Ürünler kategoriye göre sıralandı");
+        }
     }
 }

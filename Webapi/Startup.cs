@@ -20,7 +20,13 @@ namespace ShopApp.Core.Webapi
         {
 
             services.AddControllers();
-
+            services.AddCors(opts =>
+            {
+                opts.AddDefaultPolicy(x =>
+                {
+                    x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+                });
+            });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Webapi", Version = "v1" });
@@ -41,6 +47,7 @@ namespace ShopApp.Core.Webapi
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseCors();
 
             app.UseAuthorization();
 
