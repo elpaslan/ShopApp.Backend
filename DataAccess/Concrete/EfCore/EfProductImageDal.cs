@@ -10,7 +10,8 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EfCore
 {
-    public class EfProductImageDal:EfEntityRepositoryBase<ProductImage,ShopContext>,IProductImageDal
+    public class EfProductImageDal : EfEntityRepositoryBase<ProductImage, ShopContext>, IProductImageDal
     {
+
     }
 }

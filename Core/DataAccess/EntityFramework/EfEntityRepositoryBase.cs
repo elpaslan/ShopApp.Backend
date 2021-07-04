@@ -38,7 +38,7 @@ namespace Core.DataAccess.EntityFramework
 
 
 
-        List<TEntity> IEntityRepository<TEntity>.GetList(Expression<Func<TEntity, bool>> filter)
+        List<TEntity> IEntityRepository<TEntity>.GetAll(Expression<Func<TEntity, bool>> filter)
         {
             using var context = new TContext();
             return filter == null

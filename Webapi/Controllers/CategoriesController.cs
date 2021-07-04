@@ -21,9 +21,9 @@ namespace Webapi.Controllers
         }
 
         [HttpGet("getall")]
-        public IActionResult GetList()
+        public IActionResult GetAll()
         {
-            var result = _categoryService.GetList();
+            var result = _categoryService.GetAll();
             if (result.Success)
             {
                 return Ok(result);

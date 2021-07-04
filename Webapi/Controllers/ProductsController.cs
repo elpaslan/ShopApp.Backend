@@ -14,7 +14,6 @@ namespace ShopApp.Core.Webapi.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly IProductService _productService;
-
         public ProductsController(IProductService productService)
         {
             _productService = productService;
@@ -23,7 +22,7 @@ namespace ShopApp.Core.Webapi.Controllers
         [HttpGet("getall")]
         public IActionResult GetList()
         {
-            var result = _productService.GetList();
+            var result = _productService.GetAll();
             if (result.Success)
             {
                 return Ok(result);
@@ -31,11 +30,55 @@ namespace ShopApp.Core.Webapi.Controllers
             return BadRequest(result);            
         }
 
+        [HttpGet("getproductdetails")]
+        public IActionResult GetProductDetails()
+        {
+            var result = _productService.GetProductDetails();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getproductdetailbyproductid")]
+        public IActionResult GetProductDetailByProductid(int productId)
+        {
+            var result = _productService.GetProductDetailByProductId(productId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getproductdetailbycategoryid")]
+        public IActionResult GetProductDetailByCategoryId(int categoryId)
+        {
+            var result = _productService.GetProductDetailByCategoryId(categoryId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
         [HttpGet("getbycategory")]
         public IActionResult GetByCategory(int categoryId)
         {
             var result = _productService.GetAllByCategory(categoryId);
 
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getproductdetailbybrandid")]
+        public IActionResult GetProductDetailByBrandId(int brandId)
+        {
+            var result = _productService.GetProductDetailByBrandId(brandId);
             if (result.Success)
             {
                 return Ok(result);
@@ -54,6 +97,7 @@ namespace ShopApp.Core.Webapi.Controllers
             }
             return BadRequest(result);
         }
+       
         [HttpPost("update")]
         public IActionResult Update(Product product)
         {
@@ -64,6 +108,7 @@ namespace ShopApp.Core.Webapi.Controllers
             }
             return BadRequest(result);
         }
+       
         [HttpPost("delete")]
         public IActionResult Delete(Product product)
         {

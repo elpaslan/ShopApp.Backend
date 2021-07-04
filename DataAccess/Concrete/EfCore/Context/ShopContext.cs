@@ -17,6 +17,7 @@ namespace DataAccess.Concrete.EfCore.Context
 
         public DbSet<Product> Products { get; set; }
         public DbSet<Brand> Brands { get; set; }
+        public DbSet<BrandImages> BrandImages { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }
 

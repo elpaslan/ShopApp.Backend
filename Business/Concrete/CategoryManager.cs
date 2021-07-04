@@ -32,9 +32,9 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CategoryDeleted);
         }
 
-        public IDataResult<List<Category>> GetList()
+        public IDataResult<List<Category>> GetAll()
         {
-            return new SuccessDataResult<List<Category>>(_categoryDal.GetList());
+            return new SuccessDataResult<List<Category>>(_categoryDal.GetAll());
         }
 
         public IResult MultiAdd(Category[] categories)

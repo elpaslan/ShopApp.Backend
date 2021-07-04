@@ -1,5 +1,4 @@
 ﻿using Business.Generics;
-using Core.Utilities.Results;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -9,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    public interface ICategoryService: IGenericCrudOperationService<Category>
+    public interface IProductImagesService : IGenericImagesService<ProductImage>
     {
-           
-        IResult MultiAdd(Category[] categories);
-       
+
     }
 }

@@ -1,5 +1,7 @@
-﻿using Core.Utilities.Results;
+﻿using Business.Generics;
+using Core.Utilities.Results;
 using Entities.Concrete;
+using Entities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,11 +10,8 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    public interface IBrandService
+    public interface IBrandService: IGenericCrudOperationService<Brand>
     {
-        IDataResult<List<Brand>> GetList();       
-        IResult Add(Brand brand);
-        IResult Delete(Brand brand);
-        IResult Update(Brand brand);
+        //IDataResult<List<BrandDetailDto>> GetBrandDetails();
     }
 }

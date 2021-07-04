@@ -3,6 +3,7 @@ using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,17 +32,22 @@ namespace Business.Concrete
             _brandDal.Delete(brand);
             return new SuccessResult(Messages.BrandDeleted);
         }
-
-        public IDataResult<List<Brand>> GetList()
-        {
-
-            return new SuccessDataResult<List<Brand>>(_brandDal.GetList());
-        }
-
         public IResult Update(Brand brand)
         {
             _brandDal.Update(brand);
             return new SuccessResult(Messages.BrandtUpdated);
         }
+
+        public IDataResult<List<Brand>> GetAll()
+        {
+            return new SuccessDataResult<List<Brand>>(_brandDal.GetAll());
+        }
+
+        //public IDataResult<List<BrandDetailDto>> GetBrandDetails()
+        //{
+        //    return new SuccessDataResult<List<BrandDetailDto>>(_brandDal.GetBrandDetails());
+        //}
+
+       
     }
 }
