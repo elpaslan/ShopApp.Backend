@@ -14,5 +14,7 @@ namespace Business.Abstract
     {
         IDataResult<List<BasketDetailDto>> GetBasketDetails();
         IDataResult<List<BasketDetailDto>> GetBasketDetailsByUserId(int userId);
+
+        IResult AddToCart(string userId, int productId, int quantity);
     }
 }

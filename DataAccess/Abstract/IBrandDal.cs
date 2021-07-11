@@ -13,5 +13,6 @@ namespace DataAccess.Abstract
     public interface IBrandDal:IEntityRepository<Brand>
     {
         //List<BrandDetailDto> GetBrandDetails(Expression<Func<BrandDetailDto, bool>> filter = null);
+       
     }
 }

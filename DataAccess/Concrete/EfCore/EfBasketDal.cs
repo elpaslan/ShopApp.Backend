@@ -14,6 +14,7 @@ namespace DataAccess.Concrete.EfCore
 {
     public class EfBasketDal : EfEntityRepositoryBase<Basket, ShopContext>, IBasketDal
     {
+       
         public List<BasketDetailDto> GetBasketDetails(Expression<Func<BasketDetailDto, bool>> filter = null)
         {
             using (ShopContext context = new ShopContext())

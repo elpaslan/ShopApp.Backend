@@ -13,5 +13,6 @@ namespace DataAccess.Abstract
     public interface IBasketDal:IEntityRepository<Basket>
     {
         List<BasketDetailDto> GetBasketDetails(Expression<Func<BasketDetailDto,bool>> filter=null);
+        
     }
 }

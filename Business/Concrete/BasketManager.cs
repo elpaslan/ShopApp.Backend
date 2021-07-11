@@ -25,6 +25,7 @@ namespace Business.Concrete
             _basketDal.Add(basket);
             return new SuccessResult(Messages.AddedBasket);
         }
+             
 
         public IResult Delete(Basket basket)
         {
