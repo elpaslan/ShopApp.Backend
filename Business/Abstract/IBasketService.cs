@@ -10,11 +10,16 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    public interface IBasketService:IGenericCrudOperationService<Basket>
+    public interface IBasketService
     {
-        IDataResult<List<BasketDetailDto>> GetBasketDetails();
-        IDataResult<List<BasketDetailDto>> GetBasketDetailsByUserId(int userId);
+        Task<Basket> GetBasketAsync(string basketId);
+        Task<Basket> UpdateBasketAsync(Basket basket);
+        Task<bool> DeleteBasketAsync(string basketId);
 
-        IResult AddToCart(string userId, int productId, int quantity);
+
+        //IDataResult<List<BasketDetailDto>> GetBasketDetails();
+        //IDataResult<List<BasketDetailDto>> GetBasketDetailsByUserId(int userId);
+
+       
     }
 }

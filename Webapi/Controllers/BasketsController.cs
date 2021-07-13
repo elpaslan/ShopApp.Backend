@@ -20,71 +20,13 @@ namespace Webapi.Controllers
             _basketService = basketService;
         }
 
-        [HttpGet("getall")]
-        public IActionResult GetAll()
+        [HttpPost]
+        public async Task<ActionResult<Basket>> GetBasketById(string id)
         {
-            var result = _basketService.GetAll();
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
+            var basket = await _basketService.GetBasketAsync(id);
+            return Ok(basket ?? new Basket(id));
         }
 
-        [HttpGet("getbasketdetails")]
-        public IActionResult GetBasketDetails()
-        {
-            var result = _basketService.GetBasketDetails();
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-
-            return BadRequest(result);
-        }
-        [HttpGet("getbasketdetailsbyuserid")]
-        public IActionResult GetBasketDetailsByUserId(int userId)
-        {
-            var result = _basketService.GetBasketDetailsByUserId(userId);
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-
-            return BadRequest(result);
-        }
-        [HttpPost("add")]
-        public IActionResult Add(Basket basket)
-        {
-            var result = _basketService.Add(basket);
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-
-            return BadRequest(result);
-        }
-        [HttpPost("delete")]
-        public IActionResult Delete(Basket basket)
-        {
-            var result = _basketService.Delete(basket);
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-
-            return BadRequest(result);
-        }
-        [HttpPost("update")]
-        public IActionResult Update(Basket basket)
-        {
-            var result = _basketService.Update(basket);
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-
-            return BadRequest(result);
-        }
+        
     }
 }

@@ -10,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using ShopApp.Core.Webapi.SeedData;
+using StackExchange.Redis;
 
 namespace ShopApp.Core.Webapi
 {
@@ -25,6 +26,13 @@ namespace ShopApp.Core.Webapi
         {
 
             services.AddControllers();
+
+            services.AddSingleton<IConnectionMultiplexer>(x =>
+            {
+                var configuration = ConfigurationOptions.Parse(Configuration.GetConnectionString("Redis"), true);
+                return ConnectionMultiplexer.Connect(configuration);
+            });
+
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowOrigin", builder => builder.WithOrigins("http://localhost:4200"));
