@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Entities.Concrete;
+using Entities.Dtos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -20,13 +21,33 @@ namespace Webapi.Controllers
             _basketService = basketService;
         }
 
-        [HttpPost]
+        [HttpGet]
         public async Task<ActionResult<Basket>> GetBasketById(string id)
         {
             var basket = await _basketService.GetBasketAsync(id);
             return Ok(basket ?? new Basket(id));
         }
 
+        [HttpPost]
+        public async Task<ActionResult<Basket>> UpdateBasket(Basket basket)
+        {
+            if (basket.Id == null)
+            {
+                var newGuidValue = Guid.NewGuid();
+                basket.Id = newGuidValue.ToString();
+            }
+            var updateBasket = await _basketService.UpdateBasketAsync(basket);
+            return Ok(updateBasket);
+        }
+
         
+
+        [HttpDelete] 
+        public async Task DeleteBasketAsync(string id) 
+        {
+            await _basketService.DeleteBasketAsync(id);
+        }
+
+
     }
 }

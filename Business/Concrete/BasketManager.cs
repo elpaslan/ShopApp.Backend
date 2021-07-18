@@ -33,12 +33,13 @@ namespace Business.Concrete
             var data = await _database.StringGetAsync(basketId);
             return data.IsNullOrEmpty ? null : JsonSerializer.Deserialize<Basket>(data);
         }
-
         public async Task<Basket> UpdateBasketAsync(Basket basket)
         {
             var created = await _database.StringSetAsync(basket.Id, JsonSerializer.Serialize(basket), TimeSpan.FromDays(30));
             if (!created) return null;
             return await GetBasketAsync(basket.Id);
         }
+
+      
     }
 }

@@ -16,7 +16,7 @@ namespace Entities.Concrete
         }
 
         public string Id { get; set; }
-        public List<BasketItem> BasketItems { get; set; } = new List<BasketItem>();
+        public List<BasketItem> Items { get; set; } = new List<BasketItem>();
         public DateTime CreateDate { get; set; }
     }
 }

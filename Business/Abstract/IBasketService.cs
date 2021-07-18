@@ -14,12 +14,6 @@ namespace Business.Abstract
     {
         Task<Basket> GetBasketAsync(string basketId);
         Task<Basket> UpdateBasketAsync(Basket basket);
-        Task<bool> DeleteBasketAsync(string basketId);
-
-
-        //IDataResult<List<BasketDetailDto>> GetBasketDetails();
-        //IDataResult<List<BasketDetailDto>> GetBasketDetailsByUserId(int userId);
-
-       
+        Task<bool> DeleteBasketAsync(string basketId);   
     }
 }
